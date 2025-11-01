@@ -3,50 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MetaRefund — обмен TON → USDT с кабинетом и аналитикой</title>
+  <title>MetaRefund — обмен TON → USDT с KYC и аналитикой</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="#">MetaRefund</a> |
-      <a href="#">Курсы</a> |
-      <a href="#">Кошелёк</a> |
-      <a href="#">Кабинет KYC</a> |
-      <a href="#">Поддержка</a> |
-      <a href="#">Админ-панель</a>
+  <header class="navbar">
+    <nav class="nav-container">
+      <a href="#" class="nav-link">MetaRefund</a>
+      <a href="#" class="nav-link">Курсы</a>
+      <a href="#" class="nav-link">Кошелёк</a>
+      <a href="#" class="nav-link">Кабинет KYC</a>
+      <a href="#" class="nav-link">Поддержка</a>
+      <a href="#" class="nav-link">Админ-панель</a>
+      <button class="btn-connect">Connect Wallet</button>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero_inner">
-        <h1 id="hero-title">
-          MetaRefund — обмен TON → USDT с KYC и аналитикой
-        </h1>
-        <p>
-          Проект с продвинутой архитектурой: авторизация через Tonkeeper, 
-          свап TON на USDT, учёт балансов и управление через админ-панель.
-          Поддерживаем KYC, AML и службу поддержки прямо из браузера.
-        </p>
+  <main class="section-hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        MetaRefund — обмен TON → USDT с кабинетом и аналитикой
+      </h1>
+      <p class="hero-text">
+        Проект с продвинутой архитектурой: авторизация через Tonkeeper,
+        свап TON на USDT, учёт балансов и управление через админ-панель.
+        Поддерживаем KYC, AML и службу поддержки прямо из браузера.
+      </p>
 
-        <div class="hero_cta">
-          <button class="primary-btn" data-open="wallet-modal">Начать обмен</button>
-          <button class="ghost-btn" data-open="roadmap-modal">План внедрения</button>
-        </div>
-
-        <ul class="hero_bullets">
-          <li>Интеграция с STON.fi / маркет-мейкер для ликвидности</li>
-          <li>Уникальная аналитика и трекинг транзакций</li>
-          <li>Мониторинг сделок и тикетов пользователей</li>
-        </ul>
+      <div class="hero-buttons">
+        <button class="btn-primary">Начать обмен</button>
+        <button class="btn-secondary">План внедрения</button>
       </div>
-    </section>
+
+      <ul class="hero-list">
+        <li>Интеграция с STON.fi / маркет-мейкер для ликвидности</li>
+        <li>Уникальная аналитика и трекинг транзакций</li>
+        <li>Мониторинг сделок и тикетов пользователей</li>
+      </ul>
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 MetaRefund / MetaSwap</p>
+  <footer class="footer">
+    © 2025 MetaRefund / MetaSwap
   </footer>
 
   <script src="script.js"></script>
