@@ -621,7 +621,9 @@
       </div>
     </div>
 
-    <script type="module">
+    </div>
+
+<script type="module">
   // Импорт Firebase SDK (новая версия)
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
   import { 
@@ -634,12 +636,13 @@
 
   // 🔑 Твоя конфигурация Firebase
   const firebaseConfig = {
-    apiKey: "AIzaSyAe62dEDPe9FJ-YFa3zA--rMUyhRDEkno",
+    apiKey: "AIzaSyAe62dED0Pe3FJ-YFa3zA--rMUyhRDEkno",
     authDomain: "metaswap-80b28.firebaseapp.com",
     projectId: "metaswap-80b28",
     storageBucket: "metaswap-80b28.appspot.com",
     messagingSenderId: "906312532303",
-    appId: "1:906312532303:web:f14dbf3d908a2b69eb453a"
+    appId: "1:906312532303:web:f14dbf3d908a2b69eb453a",
+    measurementId: "G-VGXVBKBJHP"
   };
 
   // 🚀 Инициализация Firebase
@@ -658,12 +661,10 @@
       const password = e.target.password.value.trim();
 
       try {
-        // Попытка входа
         await signInWithEmailAndPassword(auth, email, password);
         alert("✅ Вход выполнен успешно!");
         document.getElementById("login-modal").classList.add("hidden");
       } catch (err) {
-        // Если пользователя нет — создаём нового
         if (err.code === "auth/user-not-found") {
           await createUserWithEmailAndPassword(auth, email, password);
           alert("🎉 Регистрация успешна!");
@@ -688,6 +689,6 @@
   });
 </script>
 
-    <script src="script.js" defer></script>
-  </body>
+<script src="script.js" defer></script>
+</body>
 </html>
