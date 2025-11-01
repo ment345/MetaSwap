@@ -621,6 +621,73 @@
       </div>
     </div>
 
+    <script type="module">
+  // Импорт Firebase SDK (новая версия)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signOut 
+  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  // 🔑 Твоя конфигурация Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyAe62dEDPe9FJ-YFa3zA--rMUyhRDEkno",
+    authDomain: "metaswap-80b28.firebaseapp.com",
+    projectId: "metaswap-80b28",
+    storageBucket: "metaswap-80b28.appspot.com",
+    messagingSenderId: "906312532303",
+    appId: "1:906312532303:web:f14dbf3d908a2b69eb453a"
+  };
+
+  // 🚀 Инициализация Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // 🎯 Работа с формой входа / регистрации
+  const loginForm = document.getElementById("loginForm");
+  const loginBtn = document.getElementById("loginBtn");
+  const profileEmail = document.getElementById("profileEmail");
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value.trim();
+      const password = e.target.password.value.trim();
+
+      try {
+        // Попытка входа
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("✅ Вход выполнен успешно!");
+        document.getElementById("login-modal").classList.add("hidden");
+      } catch (err) {
+        // Если пользователя нет — создаём нового
+        if (err.code === "auth/user-not-found") {
+          await createUserWithEmailAndPassword(auth, email, password);
+          alert("🎉 Регистрация успешна!");
+          document.getElementById("login-modal").classList.add("hidden");
+        } else {
+          alert("Ошибка: " + err.message);
+        }
+      }
+    });
+  }
+
+  // 👤 Следим за состоянием пользователя
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      profileEmail.textContent = user.email;
+      loginBtn.textContent = "Выйти";
+      loginBtn.onclick = () => signOut(auth);
+    } else {
+      profileEmail.textContent = "—";
+      loginBtn.textContent = "Войти / Регистрация";
+    }
+  });
+</script>
+
     <script src="script.js" defer></script>
   </body>
 </html>
