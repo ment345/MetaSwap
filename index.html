@@ -690,5 +690,41 @@ const firebaseConfig = {
 </script>
 
 <script src="script.js" defer></script>
+
+    <!-- 🔗 TonConnect SDK -->
+<script type="module">
+  import { TonConnectUI } from "https://unpkg.com/@tonconnect/ui@2.0.9/dist/tonconnect-ui.min.js";
+
+  // Создаём экземпляр SDK
+  const tonConnectUI = new TonConnectUI({
+    manifestUrl: "https://ment345.github.io/MetaSwap/tonconnect-manifest.json"
+  });
+
+  // Кнопка "Connect Wallet"
+  const connectBtn = document.getElementById("connectBtn");
+
+  // Обработка клика
+  connectBtn.addEventListener("click", async () => {
+    try {
+      await tonConnectUI.connectWallet();
+    } catch (err) {
+      alert("Ошибка при подключении кошелька: " + err.message);
+    }
+  });
+
+  // Следим за статусом подключения
+  tonConnectUI.onStatusChange((wallet) => {
+    if (wallet) {
+      connectBtn.textContent = "✅ Wallet connected";
+      console.log("Подключен кошелёк:", wallet.account.address);
+      // Можно отобразить адрес в профиле, например:
+      document.getElementById("profileAddress").textContent = wallet.account.address;
+    } else {
+      connectBtn.textContent = "Connect Wallet";
+      document.getElementById("profileAddress").textContent = "—";
+    }
+  });
+</script>
+
 </body>
 </html>
